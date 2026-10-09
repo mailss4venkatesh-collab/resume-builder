@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Builder</title>
+<style>
+body{font-family:Arial;padding:15px;max-width:900px;margin:auto;background:#f3f4f6}
+.form-box{background:white;padding:20px;border-radius:10px}
+input,textarea{width:100%;padding:10px;margin:5px 0;border:1px solid #ccc;border-radius:5px;font-size:16px}
+button{padding:12px 18px;margin:5px;border:none;border-radius:8px;font-size:16px;color:white}
+.resume-output{background:white;padding:30px;margin-top:20px;border-radius:10px}
+</style>
+</head>
+<body>
+<h1>Resume Builder - 5 Templates</h1>
+<div class="form-box">
+<input id="name" placeholder="Full Name">
+<input id="email" placeholder="Email Phone">
+<textarea id="exp" placeholder="Experience"></textarea>
+<textarea id="edu" placeholder="Education"></textarea>
+<textarea id="skills" placeholder="Skills"></textarea>
+<h2>Choose Template</h2>
+<button style="background:#2563eb" onclick="showTemplate(1)">1. Modern Blue</button>
+<button style="background:#111827" onclick="showTemplate(2)">2. Professional Black</button>
+<button style="background:white;color:black;border:1px solid black" onclick="showTemplate(3)">3. Minimal</button>
+<button style="background:#f59e0b" onclick="showTemplate(4)">4. Creative</button>
+<button style="background:#059669" onclick="showTemplate(5)">5. ATS Simple</button>
+<button style="background:#dc2626;width:100%;padding:15px;margin-top:10px" onclick="window.print()">Download as PDF</button>
+</div>
+<div id="resume" class="resume-output">Resume appears here</div>
+<script>
+function showTemplate(num){
+let n=document.getElementById('name').value||'Your Name';
+let e=document.getElementById('email').value||'email@example.com';
+let ex=document.getElementById('exp').value||'Experience';
+let ed=document.getElementById('edu').value||'Education';
+let sk=document.getElementById('skills').value||'Skills';
+let html='';
+if(num==1) html=`<div><h1 style="color:#2563eb">${n}</h1><p>${e}</p><h2>Experience</h2><p>${ex}</p><h2>Education</h2><p>${ed}</p><h2>Skills</h2><p>${sk}</p></div>`;
+if(num==2) html=`<div style="border-left:5px solid black;padding-left:15px"><h1>${n}</h1><p>${e}</p><h2>Experience</h2><p>${ex}</p><h2>Education</h2><p>${ed}</p><h2>Skills</h2><p>${sk}</p></div>`;
+if(num==3) html=`<div style="text-align:center"><h1>${n}</h1><p>${e}</p><h2>Experience</h2><p>${ex}</p><h2>Education</h2><p>${ed}</p><h2>Skills</h2><p>${sk}</p></div>`;
+if(num==4) html=`<div style="background:#fffbeb;border:2px solid #f59e0b;padding:20px"><h1 style="color:#d97706">${n}</h1><p>${e}</p><h2>Experience</h2><p>${ex}</p><h2>Education</h2><p>${ed}</p><h2>Skills</h2><p>${sk}</p></div>`;
+if(num==5) html=`<div><h1>${n}</h1><p>${e}</p><p><b>Exp:</b> ${ex}</p><p><b>Edu:</b> ${ed}</p><p><b>Skills:</b> ${sk}</p></div>`;
+document.getElementById('resume').innerHTML=html;
+}
+</script>
+</body>
+</html>
